@@ -1,6 +1,7 @@
 {
     "name": "Varneon.VUdon.PlayerScaleUtility.Editor",
     "references": [
+        "UdonSharp.Runtime",
         "Varneon.VUdon.PlayerScaleUtility.Runtime"
     ],
     "includePlatforms": [
