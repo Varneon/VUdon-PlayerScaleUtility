@@ -21,8 +21,11 @@ namespace Varneon.VUdon.PlayerScaleUtility.Editor
             // Get the PlayerScaleUtility from the scene
             PlayerScaleUtility playerScaleUtility = Object.FindObjectOfType<PlayerScaleUtility>();
 
-            // Find all objects with PlayerScaleConstraint
-            Transform[] playerScaleConstrainedTransforms = Resources.FindObjectsOfTypeAll<PlayerScaleConstraint>().Where(c => c.gameObject.scene.IsValid()).Select(c => c.transform).ToArray();
+            // Find all PlayerScaleConstraints
+            PlayerScaleConstraint[] playerScaleConstraints = Resources.FindObjectsOfTypeAll<PlayerScaleConstraint>();
+
+            // Get the Transforms from all constraints
+            Transform[] playerScaleConstrainedTransforms = playerScaleConstraints.Where(c => c.gameObject.scene.IsValid()).Select(c => c.transform).ToArray();
 
             // Assign constrained transforms to the utility
             playerScaleUtility.constrainedTransforms = playerScaleConstrainedTransforms;
@@ -32,6 +35,12 @@ namespace Varneon.VUdon.PlayerScaleUtility.Editor
 
             // Assign callback receivers to the utility
             playerScaleUtility.callbackReceivers = playerScaleCallbackReceivers;
+
+            // Destroy all constraint components
+            foreach(PlayerScaleConstraint c in playerScaleConstraints)
+            {
+                Object.DestroyImmediate(c);
+            }
         }
     }
 }
