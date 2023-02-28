@@ -1,5 +1,6 @@
 ﻿using JetBrains.Annotations;
 using System.Linq;
+using UnityEditor;
 using UnityEditor.Callbacks;
 using UnityEngine;
 using Varneon.VUdon.PlayerScaleUtility.Abstract;
@@ -11,6 +12,8 @@ namespace Varneon.VUdon.PlayerScaleUtility.Editor
     /// </summary>
     public static class PlayerScaleUtilityBuildPostProcessor
     {
+        private const string PREFAB_PATH = "Packages/com.varneon.vudon.player-scale-utility/Runtime/Prefabs/PlayerScaleUtility.prefab";
+
         /// <summary>
         /// Processes the PlayerScaleUtility on build
         /// </summary>
@@ -24,14 +27,24 @@ namespace Varneon.VUdon.PlayerScaleUtility.Editor
             // Find all PlayerScaleConstraints
             PlayerScaleConstraint[] playerScaleConstraints = Resources.FindObjectsOfTypeAll<PlayerScaleConstraint>();
 
+            // Find all PlayerScaleCallbackReceivers
+            PlayerScaleCallbackReceiver[] playerScaleCallbackReceivers = Resources.FindObjectsOfTypeAll<PlayerScaleCallbackReceiver>().Where(r => r.gameObject.scene.IsValid()).ToArray();
+
+            // If there are no constraints or callback receivers, return
+            if(playerScaleConstraints.Length == 0 && playerScaleCallbackReceivers.Length == 0)
+            {
+                return;
+            }
+            else if(playerScaleUtility == null) // If there are constraints and/or callback receivers, but the utility cannot be found, create one
+            {
+                playerScaleUtility = Object.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>(PREFAB_PATH)).GetComponent<PlayerScaleUtility>();
+            }
+
             // Get the Transforms from all constraints
             Transform[] playerScaleConstrainedTransforms = playerScaleConstraints.Where(c => c.gameObject.scene.IsValid()).Select(c => c.transform).ToArray();
 
             // Assign constrained transforms to the utility
             playerScaleUtility.constrainedTransforms = playerScaleConstrainedTransforms;
-
-            // Find all PlayerScaleCallbackReceivers
-            PlayerScaleCallbackReceiver[] playerScaleCallbackReceivers = Resources.FindObjectsOfTypeAll<PlayerScaleCallbackReceiver>().Where(r => r.gameObject.scene.IsValid()).ToArray();
 
             // Assign callback receivers to the utility
             playerScaleUtility.callbackReceivers = playerScaleCallbackReceivers;
