@@ -4,7 +4,7 @@
 
 </div>
 
-Utility for receiving approximate height and relative scale of the player
+Utility for receiving the relative scale of the player for calibrating e.g. IPD, pointers and quick menus
 
 # Installation
 
