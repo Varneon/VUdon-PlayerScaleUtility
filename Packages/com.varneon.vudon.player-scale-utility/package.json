@@ -4,7 +4,7 @@
   "version": "0.1.0-alpha.1",
   "unity": "2019.4",
   "unityRelease": "29f1",
-  "description": "Utility for receiving approximate height and relative scale of the player",
+  "description": "Utility for receiving the relative scale of the player for calibrating e.g. IPD, pointers and quick menus",
   "author": {
     "name": "Varneon",
     "url": "https://github.com/Varneon"
