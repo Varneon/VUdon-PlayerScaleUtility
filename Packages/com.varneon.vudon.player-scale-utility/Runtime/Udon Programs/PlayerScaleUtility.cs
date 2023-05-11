@@ -7,6 +7,7 @@ namespace Varneon.VUdon.PlayerScaleUtility
     /// <summary>
     /// Utility class for detecting the player's scale
     /// </summary>
+    [AddComponentMenu("")] // Do not show this component in Add Component menu, the provided prefab should always be used
     [RequireComponent(typeof(Camera))]
     [RequireComponent(typeof(AudioListener))]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
