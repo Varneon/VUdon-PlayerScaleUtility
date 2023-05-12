@@ -54,8 +54,19 @@ namespace Varneon.VUdon.PlayerScaleUtility
 
         private void Start()
         {
+#if UNITY_EDITOR // Avatar change doesn't get triggered in editor, run it once to ensure that systems dependent on it will function properly
+            SendCustomEventDelayedFrames(nameof(TriggerAvatarChangeInEditor), 0);
+#else
             CheckScale();
+#endif
         }
+
+#if UNITY_EDITOR
+        public void TriggerAvatarChangeInEditor()
+        {
+            OnAvatarChanged();
+        }
+#endif
 
         public void CheckScale()
         {
