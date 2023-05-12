@@ -16,7 +16,7 @@ GameObject:
   m_Layer: 0
   m_Name: PlayerScaleUtility
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 2800000, guid: 885b5cfdea9500047b87c07d1bbff7fc, type: 3}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
