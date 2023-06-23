@@ -1,3 +1,5 @@
+> # :warning: VRChat's official avatar scaling is in beta and this package will be deprecated after it goes live! Please see: https://creators.vrchat.com/worlds/udon/players/player-avatar-scaling and https://creators.vrchat.com/worlds/udon/avatar-events
+
 <div>
 
 # [VUdon](https://github.com/Varneon/VUdon) - Player Scale Utility [![GitHub Repo stars](https://img.shields.io/github/stars/Varneon/VUdon-PlayerScaleUtility?style=flat&label=Stars)](https://github.com/Varneon/VUdon-PlayerScaleUtility/stargazers) [![GitHub all releases](https://img.shields.io/github/downloads/Varneon/VUdon-PlayerScaleUtility/total?color=blue&label=Downloads&style=flat)](https://github.com/Varneon/VUdon-PlayerScaleUtility/releases) [![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/Varneon/VUdon-PlayerScaleUtility?color=blue&label=Release&sort=semver&style=flat)](https://github.com/Varneon/VUdon-PlayerScaleUtility/releases/latest)
