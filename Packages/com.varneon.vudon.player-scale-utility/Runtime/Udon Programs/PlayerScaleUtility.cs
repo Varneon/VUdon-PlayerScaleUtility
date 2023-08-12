@@ -9,6 +9,7 @@ namespace Varneon.VUdon.PlayerScaleUtility
     /// Utility class for dispatching player's relative scale on avatar height change
     /// </summary>
     [AddComponentMenu("")] // Do not show this component in Add Component menu, the provided prefab should always be used
+    [DisallowMultipleComponent]
     [RequireComponent(typeof(Camera))]
     [RequireComponent(typeof(AudioListener))]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
