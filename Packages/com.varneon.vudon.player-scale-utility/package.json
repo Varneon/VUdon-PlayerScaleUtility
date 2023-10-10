@@ -1,7 +1,7 @@
 {
   "name": "com.varneon.vudon.player-scale-utility",
   "displayName": "VUdon - Player Scale Utility",
-  "version": "0.1.1-beta.1",
+  "version": "0.1.2-beta.1",
   "unity": "2019.4",
   "unityRelease": "29f1",
   "description": "Utility for receiving the relative scale of the player for calibrating e.g. IPD, pointers and quick menus",
@@ -11,9 +11,9 @@
   },
   "resolutionStrategy": "highestMinor",
   "dependencies": {
-    "com.vrchat.udonsharp": "1.1.9"
+    "com.vrchat.worlds": "3.4.0"
   },
   "vpmDependencies": {
-    "com.vrchat.udonsharp": ">=1.1.9 <2.0.0"
+    "com.vrchat.worlds": ">=3.4.0 <4.0.0"
   }
 }
