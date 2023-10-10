@@ -1,5 +1,3 @@
-> # :warning: VRChat's official avatar scaling is in beta and this package will be deprecated after it goes live! Please see: https://creators.vrchat.com/worlds/udon/players/player-avatar-scaling and https://creators.vrchat.com/worlds/udon/avatar-events
-
 <div>
 
 # [VUdon](https://github.com/Varneon/VUdon) - Player Scale Utility [![GitHub Repo stars](https://img.shields.io/github/stars/Varneon/VUdon-PlayerScaleUtility?style=flat&label=Stars)](https://github.com/Varneon/VUdon-PlayerScaleUtility/stargazers) [![GitHub all releases](https://img.shields.io/github/downloads/Varneon/VUdon-PlayerScaleUtility/total?color=blue&label=Downloads&style=flat)](https://github.com/Varneon/VUdon-PlayerScaleUtility/releases) [![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/Varneon/VUdon-PlayerScaleUtility?color=blue&label=Release&sort=semver&style=flat)](https://github.com/Varneon/VUdon-PlayerScaleUtility/releases/latest)
@@ -54,13 +52,6 @@ By adding [`PlayerScaleConstraint`](https://github.com/Varneon/VUdon-PlayerScale
 
 </details><details><summary>
 
-### Import with [Unity Package Manager (git)](https://docs.unity3d.com/2019.4/Documentation/Manual/upm-ui-giturl.html):</summary>
-
-> 1. In the Unity toolbar, select `Window` > `Package Manager` > `[+]` > `Add package from git URL...` 
-> 2. Copy and paste the following link into the URL input field: <pre lang="md">https://github.com/Varneon/VUdon-PlayerScaleUtility.git?path=/Packages/com.varneon.vudon.player-scale-utility</pre>
-
-</details><details><summary>
-
 ### Import from [Unitypackage](https://docs.unity3d.com/2019.4/Documentation/Manual/AssetPackagesImport.html):</summary>
 
 > 1. Download latest `com.varneon.vudon.player-scale-utility.unitypackage` from [here](https://github.com/Varneon/VUdon-PlayerScaleUtility/releases/latest)
@@ -72,8 +63,8 @@ By adding [`PlayerScaleConstraint`](https://github.com/Varneon/VUdon-PlayerScale
 
 ## Developed by Varneon with :hearts:
 
-![Twitter Follow](https://img.shields.io/twitter/follow/Varneon?color=%231c9cea&label=%40Varneon&logo=Twitter&style=for-the-badge)
-![YouTube Channel Subscribers](https://img.shields.io/youtube/channel/subscribers/UCKTxeXy7gyaxr-YA9qGWOYg?color=%23FF0000&label=Varneon&logo=YouTube&style=for-the-badge)
-![GitHub followers](https://img.shields.io/github/followers/Varneon?color=%23303030&label=Varneon&logo=GitHub&style=for-the-badge)
+[![Twitter Follow](https://img.shields.io/static/v1?style=for-the-badge&label=@Varneon&message=4.9K&color=1b9df0&logo=twitter)](https://twitter.com/Varneon)
+[![YouTube Channel Subscribers](https://img.shields.io/youtube/channel/subscribers/UCKTxeXy7gyaxr-YA9qGWOYg?color=%23FF0000&label=Varneon&logo=YouTube&style=for-the-badge)](https://www.youtube.com/Varneon)
+[![GitHub followers](https://img.shields.io/github/followers/Varneon?color=%23303030&label=Varneon&logo=GitHub&style=for-the-badge)](https://github.com/Varneon)
 
 </div>
