@@ -10,6 +10,7 @@ namespace Varneon.VUdon.PlayerScaleUtility
     /// </summary>
     [AddComponentMenu("")] // Do not show this component in Add Component menu, the provided prefab should always be used
     [DisallowMultipleComponent]
+    [ExcludeFromPreset]
     [RequireComponent(typeof(Camera))]
     [RequireComponent(typeof(AudioListener))]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
