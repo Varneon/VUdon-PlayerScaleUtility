@@ -14,7 +14,7 @@ namespace Varneon.VUdon.PlayerScaleUtility
     [RequireComponent(typeof(Camera))]
     [RequireComponent(typeof(AudioListener))]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
-    public class PlayerScaleUtility : UdonSharpBehaviour
+    public sealed class PlayerScaleUtility : UdonSharpBehaviour
     {
         /// <summary>
         /// Array of transforms that should be always scaled according to player's scale
@@ -40,7 +40,7 @@ namespace Varneon.VUdon.PlayerScaleUtility
 
         private float relativeCameraScale;
 
-        public override void OnAvatarEyeHeightChanged(VRCPlayerApi player, float prevEyeHeightAsMeters)
+        public sealed override void OnAvatarEyeHeightChanged(VRCPlayerApi player, float prevEyeHeightAsMeters)
         {
             if(player.isLocal)
             {
