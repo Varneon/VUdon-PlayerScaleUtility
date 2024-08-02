@@ -1,4 +1,5 @@
-﻿using UdonSharp;
+﻿using JetBrains.Annotations;
+using UdonSharp;
 using UnityEngine;
 using Varneon.VUdon.PlayerScaleUtility.Abstract;
 using VRC.SDKBase;
@@ -27,6 +28,9 @@ namespace Varneon.VUdon.PlayerScaleUtility
         /// </summary>
         [SerializeField, HideInInspector]
         internal PlayerScaleCallbackReceiver[] callbackReceivers;
+
+        [SerializeField, HideInInspector]
+        internal new Camera camera;
 
         /// <summary>
         /// Scale of the player's avatar in relation to the player's real height
@@ -62,6 +66,12 @@ namespace Varneon.VUdon.PlayerScaleUtility
                     callbackReceiver.OnPlayerScaleChanged(relativeCameraScale);
                 }
             }
+        }
+
+        [PublicAPI]
+        public float GetLocalPlayerIPD()
+        {
+            return camera.stereoSeparation;
         }
     }
 }
