@@ -1,13 +1,15 @@
 ﻿using UdonSharp;
 using UnityEngine;
 using Varneon.VUdon.PlayerScaleUtility.Abstract;
+using VRC.SDKBase;
 
 namespace Varneon.VUdon.PlayerScaleUtility
 {
     /// <summary>
-    /// Utility class for detecting the player's scale
+    /// Utility class for dispatching player's relative scale on avatar height change
     /// </summary>
     [AddComponentMenu("")] // Do not show this component in Add Component menu, the provided prefab should always be used
+    [DisallowMultipleComponent]
     [RequireComponent(typeof(Camera))]
     [RequireComponent(typeof(AudioListener))]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
@@ -26,73 +28,38 @@ namespace Varneon.VUdon.PlayerScaleUtility
         internal PlayerScaleCallbackReceiver[] callbackReceivers;
 
         /// <summary>
-        /// Interval in seconds for detecting the player's scale
+        /// Scale of the player's avatar in relation to the player's real height
         /// </summary>
-        [Tooltip("Interval in seconds for detecting the player's scale")]
-        [SerializeField, Range(0f, 5f)]
-        private float interval = 1f;
-
-        private Vector3 CameraScale
-        {
-            get => cameraScale;
-            set
-            {
-                if (cameraScale != value)
-                {
-                    cameraScale = value;
-
-                    OnAvatarChanged();
-                }
-            }
-        }
-
-        private Vector3 cameraScale = Vector3.one;
-
+        /// <remarks>
+        /// <para>(Avatar height / Player's real height)</para>
+        /// <para>Example: 1.35 m (Avatar) / 1.8 m (Player) = 0.75 (Relative scale)</para>
+        /// <para>Player's real height is 1.8 m and they're using smaller avatar, thus their camera scale is smaller, perceiving the world larger than they normally would</para>
+        /// </remarks>
         public float PlayerScale => relativeCameraScale;
 
         private float relativeCameraScale;
 
-        private void Start()
+        public override void OnAvatarEyeHeightChanged(VRCPlayerApi player, float prevEyeHeightAsMeters)
         {
-#if UNITY_EDITOR // Avatar change doesn't get triggered in editor, run it once to ensure that systems dependent on it will function properly
-            SendCustomEventDelayedFrames(nameof(TriggerAvatarChangeInEditor), 0);
-#else
-            CheckScale();
-#endif
-        }
-
-#if UNITY_EDITOR
-        public void TriggerAvatarChangeInEditor()
-        {
-            OnAvatarChanged();
-        }
-#endif
-
-        public void CheckScale()
-        {
-            CameraScale = transform.localScale;
-
-            SendCustomEventDelayedSeconds(nameof(CheckScale), interval);
-        }
-
-        private void OnAvatarChanged()
-        {
-            relativeCameraScale = 1f / CameraScale.x;
-
-            Vector3 playerScale = new Vector3(relativeCameraScale, relativeCameraScale, relativeCameraScale);
-
-            foreach (Transform t in constrainedTransforms)
+            if(player.isLocal)
             {
-                if(t == null) { continue; }
+                relativeCameraScale = 1f / transform.localScale.x;
 
-                t.localScale = playerScale;
-            }
+                Vector3 playerScale = new Vector3(relativeCameraScale, relativeCameraScale, relativeCameraScale);
 
-            foreach(PlayerScaleCallbackReceiver callbackReceiver in callbackReceivers)
-            {
-                if(callbackReceiver == null) { continue; }
+                foreach (Transform t in constrainedTransforms)
+                {
+                    if (t == null) { continue; }
 
-                callbackReceiver.OnPlayerScaleChanged(relativeCameraScale);
+                    t.localScale = playerScale;
+                }
+
+                foreach (PlayerScaleCallbackReceiver callbackReceiver in callbackReceivers)
+                {
+                    if (callbackReceiver == null) { continue; }
+
+                    callbackReceiver.OnPlayerScaleChanged(relativeCameraScale);
+                }
             }
         }
     }
