@@ -49,6 +49,9 @@ namespace Varneon.VUdon.PlayerScaleUtility.Editor
             // Assign callback receivers to the utility
             playerScaleUtility.callbackReceivers = playerScaleCallbackReceivers;
 
+            // Assign the attached camera to the utility
+            playerScaleUtility.camera = playerScaleUtility.GetComponent<Camera>();
+
             // Destroy all constraint components
             foreach(PlayerScaleConstraint c in playerScaleConstraints)
             {
