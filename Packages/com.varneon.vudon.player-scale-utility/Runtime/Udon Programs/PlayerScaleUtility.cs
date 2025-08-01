@@ -51,20 +51,16 @@ namespace Varneon.VUdon.PlayerScaleUtility
             {
                 relativeCameraScale = 1f / transform.localScale.x;
 
-                Vector3 playerScale = new Vector3(relativeCameraScale, relativeCameraScale, relativeCameraScale);
+                Vector3 playerScale = Vector3.one * relativeCameraScale;
 
                 foreach (Transform t in constrainedTransforms)
                 {
-                    if (t == null) { continue; }
-
-                    t.localScale = playerScale;
+                    if (t) { t.localScale = playerScale; }
                 }
 
                 foreach (PlayerScaleCallbackReceiver callbackReceiver in callbackReceivers)
                 {
-                    if (callbackReceiver == null) { continue; }
-
-                    callbackReceiver.OnPlayerScaleChanged(relativeCameraScale);
+                    if (callbackReceiver) { callbackReceiver.OnPlayerScaleChanged(relativeCameraScale); }
                 }
             }
         }
